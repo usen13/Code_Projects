@@ -1,3 +1,16 @@
 Interview_Stuff/
 Flutter/
 *.exe
+
+# VS Code and Visual Studio local state
+**/.vscode/
+**/.vs/
+**/tasks.json
+**/launch.json
+**/c_cpp_properties.json
+**/ProjectSettings.json
+**/VSWorkspaceState.json
+
+# Generated tool output
+**/.dart_tool/
+**/build/
