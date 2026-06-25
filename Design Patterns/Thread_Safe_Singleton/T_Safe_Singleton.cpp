@@ -1,20 +1,22 @@
 #include <iostream>
-class Singleton {    // Your implementation here
+class Singleton {
 private:
     Singleton () = default;
     std::string text = "Hello World";
 
 public:
     static Singleton& getInstance() {
-        static Singleton* instance = new Singleton;
-        return *instance;
+        static Singleton instance;
+        return instance;
     }
 
     std::string getText () const {
         return text;
     }
     Singleton (Singleton& obj) = delete;
-    Singleton operator=(Singleton& obj) = delete;
+    Singleton& operator=(Singleton& obj) = delete;
+    Singleton(Singleton&&) = delete;
+    Singleton& operator=(Singleton&&) = delete;
 };
 
 int main() {
@@ -23,6 +25,5 @@ int main() {
     std::cout << a.getText() << std::endl;
     std::cout << b.getText() << std::endl;
 
-    // a and b should refer to the same instance
     std::cout << (&a == &b ? "Same instance" : "Different instances") << std::endl;
 }
