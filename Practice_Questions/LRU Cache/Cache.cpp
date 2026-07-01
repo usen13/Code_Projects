@@ -6,6 +6,8 @@ get(key) — returns the value if it exists, updates it as most recently used, r
 put(key, value) — inserts or updates a key. If at capacity, evicts the least recently used entry first
 Operations at O(1)
 *****************************************************/
+
+// Work in progress, the put function needs to be corrected.
 #include <iostream>
 #include <unordered_map>
 #include <algorithm>
@@ -40,7 +42,6 @@ public:
             auto min_it = std::min_element(m_cache.begin(), m_cache.end(), [] (const auto l, const auto r) {
                 return l.second.second < r.second.second;
             });
-            std::cout << "Evicted :" << min_it->first << std::endl; 
             m_cache.erase(min_it->first);
             m_cache[key] = {value, 0};
         } else {
